@@ -39,6 +39,8 @@ inputs:
 outputs:
   build_url:
     description: "Jenkins build URL"
+  build_status:
+    description: "[Optional] Jenkins build status if wait is set to true"
 runs:
   using: "docker"
   image: "Dockerfile"
