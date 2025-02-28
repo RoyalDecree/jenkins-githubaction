@@ -89,12 +89,10 @@ def main():
             logging.info('Build successful 🎉')
             with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
               print('build_status=SUCCESS', file=fh)
-            print("::set-output name=build_status::SUCCESS")
             return
         elif result in ('FAILURE', 'ABORTED', 'UNSTABLE'):
             with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
               print(f'build_status={result}', file=fh)
-            print(f"::set-output name=build_status::{result}")
             raise Exception(
                 f'Build status returned "{result}". Build has failed ☹️.')
         logging.info(
@@ -103,7 +101,6 @@ def main():
     else:
         with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
           print('build_status=TIMEOUT', file=fh)
-        print("::set-output name=build_status::TIMEOUT")
         raise Exception(
             f"Build has not finished and timed out. Waited for {timeout} seconds.") # noqa
 
