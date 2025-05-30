@@ -6,7 +6,7 @@ from time import time, sleep
 from api4jenkins import _patch_to
 from api4jenkins.build import Build
 
-_patch_to('api4jenkins.build', 'MavenModuleSetBuild', Build)
+_patch_to('api4jenkins.build', MavenModuleSetBuild, Build)
 
 log_level = os.environ.get('INPUT_LOG_LEVEL', 'INFO')
 logging.basicConfig(format='JENKINS_ACTION: %(message)s', level=log_level)
